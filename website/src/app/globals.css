@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+/*
+  Pop Shop design tokens.
+  Based on planningfolder/DESIGN.md: white surfaces, near-black text,
+  grey secondary text, soft rounded tiles and a light card shadow.
+  Change a colour here and it updates everywhere on the site.
+*/
+@theme {
+  --font-sans: var(--font-inter), Arial, sans-serif;
+
+  /* Text */
+  --color-ink: #191919;
+  --color-ink-muted: #707070;
+
+  /* Surfaces */
+  --color-surface: #ffffff;
+  --color-surface-muted: #f7f7f7;
+  --color-tile: #f1f1f1;
+  --color-line: #e5e5e5;
+
+  /* Brand + actions */
+  --color-brand: #e0217f; /* Pop Shop pink */
+  --color-brand-dark: #a3125b;
+  --color-action: #2f5cf0; /* main buttons, e.g. Search */
+  --color-action-hover: #1f47cf;
+  --color-link: #2a55e5;
+  --color-sale: #c8102e; /* deal / discount red */
+
+  /* Promo banners */
+  --color-lime: #b6ea4b;
+  --color-lime-ink: #1e3a05;
+  --color-candy: #f25aa8;
+  --color-candy-ink: #3d0a26;
+  --color-forest: #123d30;
+  --color-forest-ink: #f3f8e6;
+
+  /* Shape + depth */
+  --radius-tile: 16px;
+  --radius-card: 8px;
+  --shadow-raise: 0 2px 2px 0 rgb(0 0 0 / 0.24), 0 0 2px 0 rgb(0 0 0 / 0.12);
+
+  /* Motion */
+  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Page width shared by every section (max 1280px, 16px side gutters on phones) */
+@utility shell {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 16px;
+  @media (width >= 64rem) {
+    padding-inline: 24px;
+  }
+}
+
+/* Lets rows scroll sideways without showing a scrollbar */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* Clear, always-visible keyboard focus (accessibility requirement in DESIGN.md) */
+:focus-visible {
+  outline: 2px solid var(--color-action);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
